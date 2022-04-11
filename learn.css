@@ -1,0 +1,285 @@
+/*SASS Organisations*/
+/*Google fonts*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap"); /*poppins*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');/*Roboto*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');/*mont serat*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap'); /*open sans*/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');/*ubuntu*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');/*nunito*/
+/*Muli*/
+
+/*Variable declarations*/
+--bg-color: #f4f4f4; /*could be declared globally or locally within a declaration. Should be ised for colors, font-sizes, font-weights and repeeating box-model values and box-shadow */
+element {
+    background-color: var(--bg-color);
+}
+
+/*special VALUES */
+inherit | initial | calc(x - y) | auto | !important/* inherit - get from parent initial- use default. calc here says make the size y less than x. If x is vw/vh and y is px, the size would be y px less than x vw/vh everytime.  important after a declaration puts that declaration to the highest cascading priority over even inline styles*/
+*, *::before, *::after {
+    box-sizing: border-box | content-box;
+    /*get padding and margin out of width and height of element. content-box is the default where padding and margin adds to width and height*/
+    margin: 0 !important;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    /*Use this so 1rem = 10px*/
+}
+img {
+    /*put images in container ALWAYS*/ width: 100%;
+    height: 100%;
+}
+a {
+    display: inline-block;
+    /*do not give link containers width rather give them padding*/
+    background-color:;
+    color:;
+    text-decoration: none;
+}
+ul li {
+    list-style-type: none;
+    padding:;
+}
+input {
+    visibility: hidden;
+    /*for navigation ???*/
+}
+input[type="email"] {}
+button {
+    background-color:;
+    color:;
+    font-family:;
+    box-shadow:;
+    border-radius:;
+    border: none | 0;
+    padding:;
+    transition:;
+}
+button:focus {
+    outline: none;
+}
+button:active {
+    box-shadow:;
+    transform: translate(x y);
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+nav > ul.active {
+    transform: translate(x y);
+}
+h1 {
+    font-weight:;
+}
+.flex-container {
+    display: flex | inline-flex;
+    flex-direction: row | column;
+    gap:;
+    justify-content: center;
+    align-items: center;
+}
+.flex-item {
+    flex: n;
+    /*the item with the highest flex will be the widest*/
+}
+.grid-container {
+    display: grid | inline-grid;
+    /*inline-grid allows for the grid container to have inline neighbours*/
+    grid-template-columns: x y | repeat(3, xfr) | repeat(auto-fill, minmax(x, 1fr)) | minmax(x, auto);
+    /*x and y are widths of the two columns(aka tracks) | if there is space to have two or more columns of minimum width xpx, else stack. minmax x auto says let the container be xpx minimum but should grow as large as it needs to to contain it's children*/
+    grid-template-areas:
+    'a a a'
+    'x y z'
+    'x c c';
+    grid-auto-flow: column;
+    /*gives it a display flex look making each child a column. Might overflow but that is good for carousel and horizontal scrolling page*/
+    grid-auto-columns: x%;
+    /*will give the width of each column. x should not be a factor of 100 for a carousel or horizontally scrolling page*/
+    column-gap:;
+    row-gap:;
+    gap:;
+    /*margin between grid items*/
+    grid-auto-rows: xpx | minmax(apx, bpx);
+    /*make all rows x height regardless of content size. While minmax says minimum height of apx and maximum of bpx auto says take up as much space the content need*/
+    align-items: stretch | start | center | end;
+    /*stretch is the default as it says be as large as the largest sibling which is as big as it contents needs to be but all the other values make the items as big as their contents need them to be and place them top center or bottom*/
+    align-content:;
+    /*align all the content in the container as one item*/
+    justify-content: center| space-between | space-around | start | space-evenly;
+    justify-items: center |;
+}
+.grid-item {
+    grid-area: a;
+    /*from grid-template-areas in parent*/
+    align-self:;
+    justify-self:;
+    grid-column-start: x;
+    /*start from grid line x*/
+    grid-column-end: y;
+    /*end at grid line y*/
+    grid-column: x/y | x/span n;
+    /*start from x and span n more columns*/
+    grid-area: x / y / x2 / y2 /*go from row x column x to row x2 column y2*/
+    order:;
+    /*position */
+}
+.container {
+    float: ;
+    clear: both; /**/
+    cursor: pointer;
+    /* you can skip this and put it in the hover or focus state*/
+    display: none | inline-block |;
+    /*width of display inline-block is dependent on the size content while for block it's depending on the parent*/
+    position: fixed | absolute | relative;
+    z-index:; /*after any form of position to initiate a stacking order. An absolutely positioned item will stack relative to other elements in the relatively positioned parent. Put a z-index of 1 on its parent kowai.*/
+    inset: 0 | trbl;
+    trbl:;
+    /*em or %. I prefer %*/
+    /*text*/
+    font: 15px/1.5 Arial, Helvetica,sans-serif;
+    /*shorthand*/
+    color: inherit | #ffffff44 | transparent;
+    /*inherit the color from direct parent.*/
+    word-wrap: break-word;
+    /*wrap at any point in the word as long as it is too long to fit in one line not just after a space or comma*/
+    word-break: break-all;
+    /*Break all words*/
+    font-size: xrem;
+    font-weight: bold |;
+    text-align: center | left | right;
+    text-decoration:;
+    text-transform:;
+    text-shadow:;
+    /*to give some sort of font border*/
+    font-family: "Poppins", Sans-Serif | inherit;
+    line-height: /*no unit equivalent of line spacing in ms word*/;
+    /*size*/
+    max-width:;
+    width: auto | min(a, b) | 100%-xem | min-content | max-content | fit-content;
+    /*min says choose the smaller of the two. 100%-xem says it should always be 2em less than the 100% of the parent*/
+    height:;
+    aspect-ratio: x/y;
+    /*be as x wide by y high*/
+    overflow-x | overflow-y: auto | hidden;
+    /*auto to create a horizontal scroll*/
+    overscroll-behavior-inline: contain;
+    /*in a horizontally scrolling page to avoid dragging the page afrer the contents are exhausted*/
+    scroll-snap-type: inline mandatory;
+    /*for horizontal scrolling or carousel so when scrolling the children magnet to the edge of the parent. Then add scroll-snap-align of srart to all the children by selecting them with parent > * */
+    scroll-padding-inline:;
+    /*for horizontal scrolling to give padding on the x-axis */
+    perspective: xpx;
+    /*kind of like the z-index. Used for parallax scrolling*/
+    object-fit: cover;
+    /*for image container in order to maintain their aspect ratio and contain them in their container.*/
+    background-color: rgba(0,0,0,0.8) | #ffffff80 |linear-gradient(xdeg, color1, color2);
+    /*0.8 means 80% opacity. 80 after the hex color code is the 80% opacity. xdeg with axis in the middle*/
+    background-image:;
+    /*works for element with width and height*/
+    filter: blur(xem) | drop-shadow() | invert() | hue-rotate();
+    /*the higher the value of x in the blur the blurrier the element it is applied to*/
+    background-repeat: no-repeat |;
+    background-position: top xpx right ypx | center center;
+    /*position absolutely behind with top xpx right ypx center horizontally and vertically*/
+    background-size: cover | contain;
+    /*cover says expand and fill up the space. contain says expand and maintain the aspect ratio(this might not fill up the entire background) */
+    background-blend-mode: multiply;
+    /*for vwhen you have bg-color and bg-image*/
+    background-clip: text |;
+    /*use this to give text color the background-color or gradient or image of their container after setting text-fill-color to transparent*/
+    background-attachment: scroll | fixed;
+    background: image repeat x-pos y-pos/size;
+    opacity:;
+    margin: auto | trbl | y x | t lr;
+    /*em trbl of auto will consume all the space available. eg margin-top of auto will move the element as down as possible*/
+    margin-inline: auto;
+    /*margin on the x axis*/
+    inline-size:;
+    /*same as saying width*/
+    border: trbl -- size type color | 0;
+    border-radius: trbl;
+    box-shadow: x y blur color, x1 y1 blur1 color1;
+
+    padding: trbl | y x;
+    /*em*/
+    clip-path: inset | circle(x% at x y);
+    /*will make the container a circle which is x% of its original size at x pixels to the left and y pixels to the top of its original position. Inset is a line instead of a circle where x% will be the width of the line. Could be transitioned on hover.*/
+    transition: property time timing-function | cubic bezier;
+    /* property that will change in a later state eg hover. You can transition all properties except background-image and z-index .Though with background-image you can use background-size(to contain two images with one hidden) and background-position(left or right to choose which image shoes) to transition between two images in a container. For the time, if you have multiple properties to transition, use a timeline to map their entrance and exit*/
+    user-select: none;
+}
+.container::after,
+.container::before {
+    content: "";
+    position: absolute |;
+    trbl:;
+    /*em or percentage. I actually prefer %*/
+    z-index:;
+    pointer-event: none |;
+    background:;
+    filter: blur();
+    /*the higher the pixels the blurrier the background*/
+    transform: translate() | scaleX(0 to 1) | sclaeY(0 to 1) | scale(0 to 1) | rotate(xdeg);
+    transform-origin: left | center | right;
+    /*for scale where to start growing from for rotate where to place axis*/
+}
+.container::before:after {
+    transform: translate() | scaleX(0 to 1) | sclaeY(0 to 1) | scale(0 to 1) | rotate(xdeg);
+    transform-origin: left | center | right | top left;
+    /*for scale where to start growing from for rotate where to place axis. You could also look at itvas where it leaves from while the one on hover will be where it's entering from*/
+}
+.container:hover .child,
+.container:focus {
+    /*will apply this style to the child when the parent is hovered and when the parent is in focus*/
+    color:;
+    cursor:;
+    transform: translate() | scaleX(0 to 1) | sclaeY(0 to 1) | scale(0 to 1) | rotate(xdeg);
+    transform-origin: left | center | right;
+    /*for scale where to start growing from for rotate where to place axis*/
+    animation: animationName animationDuration timing-function| bezier delay;
+    animation-fill-mode: forwards;
+    /*after animation element takes the style in 100%*/
+}
+.container > * {
+    /*this selects all the direct children of the container*/
+}
+.child:nth(2) {
+    /*Selects any child class that is the second child of its parent*/
+    position: absolute |;
+    trbl:;
+    transform: translate(50, -50);
+    /*do this center it after position absolute*/
+    transform: translateZ();
+    /*for parallax effect which is relative to the perspective*/
+    transform-style: preserve-3d;
+    /*for parallax scrolling after giving the parent a perspective of xpx*/
+}
+
+@keyframes animationName {
+    from {
+        transform: scale(0);
+        opacity: .4;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@media(min-width: xpx;) {
+    /*
+    tablets
+    laptops
+    */
+    .grid-container{
+    /*to make the grid stack*/
+    grid-template-columns: 1fr;
+    /*then grab all classes that were supposed to span and remove the /y and span n*/
+}
