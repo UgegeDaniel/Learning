@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/all.min.css"> <!--Font awesome with webfonts folder adjacent to css folder which contains both the css and all.css files-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> <!--Bootstrap css cdn-->
+    <link rel="stylesheet" href="css/styles.css"> <!--custom stylesheet-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script> <!--Bootstrap JS cdn-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> <!--Bootstrap JS bundle-->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script> <!--React development build -->
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> <!--React Dom development build-->
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script> <!--React development build-->
+    defer tween max cdn <!--Library for animation-->
+    defer timeline max <!--Library for animation-->
+    <!--Content Delivery Network  --- CDN -->
+    <script defer src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script> <!--JQuery JS Library-->
+    <link
+        rel="stylesheet"
+        href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+        crossorigin="anonymous"
+        /> <!--Font awesome cdn Content Delivery Network-->
+
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous"
+        /> <!--This is the bootstrap cdn to be able to use bootstrap-->
+
+        <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+        /> <!--link to bootstrap icon-->
+
+        <link
+        href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+        rel="stylesheet"
+        />
+        <!--map box javascript api-->
+
+        <link rel="stylesheet" href="./dist/style.css">
+        <!--Sass stylesheet-->
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        clicking on the label that  corresponds to an input will have the same effect as clicking on the input itself
+    </div>
+            <!--JS Concepts-->
+        <div>
+            document is to Document Object Model (DOM) as window is to Browser Object Model (BOM). And document and everything it has belongs to window. ie. window.documnet, window.alert() etc.
+            var cannot be block-scoped but can be function-scoped while let is both. var belongs to the window object let is not. var allows hoisting and allows using a variable before declaring it. let and const allows hoisting but does not allow use before declaring (this will put the variable in a temporal dead-zone)
+            Array(n).fill("") will create an array with n empty strings in them
+            arrayName.concat(anotherArray) is the same thing as [...arrayName, ...anotherArray] which joins the two arrays. The second one is a form of array destructuring in ES-6. Doing this objects will make the second object's key value override those of existing keys of object 2
+            Returning/mutating
+            Mutating has to do with changing the value of an array item or object'key value ie. the array or object is being mutated. Some array methods that mutate are .push()
+            Return has to do with values gotten from the data in an array or object. Some array methods that return are .push() .map() 《used to pick out values in a array 》.filter(test function)《used to remove "unstandardized" array members》 .find(conditional) 《returns members that return true for the condition》
+            .reduce((parameter, iterator)=>{}, starting point) //parameter's value will start at the starting point for the first iteration
+            .includes(x) return true or false if array has x as a member
+            .some() .every《returns true or false for a condition》
+            .join("choose a separator")
+            .forEach does not return anything and does not mutate the array
+
+            .slice and .length
+            {...arrayName} changes an array to an object
+            Object.keys(objectName) returns an array of the object's keys or use values for values
+            Array.from(new Set(arrayName)) which will return an array with no repeated values
+            Object keys can be the values of variables by using [variableName] in place of the key. Now if the value of the variable should change, the name of the key will alao change.
+            when to use map() and forEach() .reduce()
+            De-structuring in JS is a way of assigning values from an array or object using their keys. FOR instance const {x, y, z} = objectName. Now x y and z are keys. Putting :a after x will collect the value from the object, copy it and also assign to a. While putting =a will asign a as a default value to x if there is no index of that reaches where x is in the destructure. a:{b} here a is a key in the object but is in itself an object and b is a key in it. You can also destructure arrays. const [a, b] = arrayName. Now a is equal in value to the 0 index of the array. You can use multiple commas to skip indexes. ... means the remaining elements in the array. [a,,, b, ...rest] here a is 0 index b is 2 indexes after a and rest is the variable that holds the remaining elements in the array. In functions, you can put in a destructured code in place of parameters eg. {x, y, z} or [a, b] inside the parameter brackets. Where x y and z are the keys of the object you want to use in the function
+            Promises in JS is a wierd data type that runs asynchronously without obstructing subsequent code ftom running.
+            Closure is the ability of a JS function that allows it to access variable outside its scope. 
+            Async / Await
+            Try / Catch and other error handling
+            API is Application Programming interface
+            Asynchronous programming does not need the browser to reload for it to run.
+            JQuery is basically a DOM manipulation library.
+            
+            REGULAR EXPRESSION 
+            const search = /Regular Expression/gi
+            search.test(string) //returns true or false depending on whether there is match of the reg exp
+            string.replace(search, newReplacement)
+            
+            g means global ie not just the first match 
+            i means case insensitive 
+            😎? means 😎 can occur once or not at all at that position 
+            😍|😘 either one
+            [xyz][abc] means the first letters of the words are x or y or z and the second letters are a or b or c
+            [a-z] means all letters
+            [a-z][a-z][a-z]: means three letters then a colon
+            [a-z]{n} means an n number of letters without special characters in between
+            [🤣a-z🤩]{n,m} means n minimum of uninterrupted letters and m maximum (without m but with the comma it is to infinity) 
+                {n,} is the same as + while {0,1} is the same as ? [0-9] is the same as \d [a-z] is the same as \w
+                😍 could be \s if you want to include spaces in the character set or 0-9 to allow match gor numbers
+                🤣 could be ^ saying the search must start with the character set that follows it 
+                put $ at the end of the expression to prevent additional characters after successful match
+            use () to group characters ie capturing group. Now when using it as replacement you can use $n to move the () and its contents around where n us the position of the () in the regular expression 
+            
+        </div>
+    </main>
+    <!--GOOGLE-->
+    <div>
+        1. "search" to make an exact only search
+        2. site:url search to search for something in a site
+        3. site:url search-item to exclude an item from a search result
+        4. search after:2019 show results from after 2019
+        5. search 2015..2019 show results from 2015 to 2019
+        6. search -(a|b) exclude a or b
+        7. search:pdf
+    </div>
+
+    <process>
+            
+    </process>
+    <git>
+                G           I         T [
+                Cl/I ---- clone / init 
+                [R] ---- remote connection if init 
+                S ---- status 
+                A ---- add 
+                C ---- commit 
+                Pl/Ps  ----- pull/push]
+//To generate and use SSH key with github, go to the root terminal directory and cd into .ssh folder then run 
+    
+    ssh-keygen -t rsa -b 4096 -C "ugege62@gmail.com"
+    eval "$(ssh-agent -s)" 
+    ssh -add .ssh/id_rsa 
+
+copy the text in the resulting  .pub file to your github ssh key list under settings and add sssh key 
+    
+    ssh -T git@github.com 
+    
+cd into your project folder 
+
+    cat .git/config 
+    git remote set-url origin git@github.com:username/repo.git 
+    
+//
+        clone // copy repo from github to local 
+        add //track files and changes in git 
+        commit //save to git 
+        push //upload to git commit to github 
+        
+        pull //download changes from remote repo to local. Don this everytime before you push
+        
+        git config --global user.name "Daniel" //To add your username
+        git config --glibal user.email "ugege62@gmail.com" //to add your email address
+        
+//directory commands 
+        pwd //means print working directory- to check the directory you are in.
+        cd /storage/emulated/0/U_DANNY/CommandLineProjects //to change the directory you want to work in.
+        mkdir "Hello-world" //this will make a new directory called Hello-world in your present directory
+        touch "index.html" //this will create a new file called index.html in your present directory
+        ls -la  //show all files including hidden ones 
+        ls //shows the folders and file in the directory 
+        nano fileName.ext //edit fileName.ext in terminal 
+        cp fileName.ext ../localFilepath //copy file from terminal inaccessible directory to local accessible directory 
+        
+        
+        git init //this will make a new repository in your present directory (which is normally a .git folder with a butt-load of stuff in it)
+//status 
+        git status //this returns commits that have been made to the repo. files created but not committed, files committed etc
+//adding files 
+        git add index.html //staging a commit
+//adding all files 
+        git add . //this adds all the files in the directory to the staging area
+        git reset xxx.ext //undo a staging process for this file or if you didn't indicate any filename, undo for all 
+//making the actual commit (with message)
+        git commit index.html -m "my first commit" -m "Description to commit message" // This makes the actual commit add a comment after -m in quotes for note purposes
+        git commit -am "Do this if you modified and not created new files" 
+        git reset HEAD~1 //go back 1 commit ago 
+        git log //show the commit history and their corresponding messages and hash values 
+        git reset hashValue //will take the project back making this commit with this hash value the latest commit
+        git reset --hard hashValue //will take the project back making this commit with this hash value the latest commit and all others that follow. 
+//(ammending the message)
+        git commit --amend -m "my first new commit" //this will amend your commit message
+//
+        git commit -am //this will add all the files in the current working directory without running the last three commands
+        git checkout -- . //restores the directory to the most recent comit
+//cloning 
+        use the https clone option with termux 
+        git clone https://github.com/LearnWebCode/welcome-to-git.git //this will clone the above repo into your present directory.
+        
+//connecting to remote repo 
+        git remote add origin git@github.com:UgegeDaniel/repository.git //connects to this repository remotely 
+        git remote -v //shows the remote repos connected to this directory 
+        git push -u origin master //setting an upstream -- this allows you to do git push in the future without typing origin master. Note that master is the branch and could be different if you branched out of this branch.
+//pushing 
+        git push 
+        git push origin main 
+        
+        git config --global alias.ac "commit -am"
+        now running :
+        git ac "file to be committed" //will commit the file
+        git revert fileName //this will undo a previous commit but keep the logs
+        NOTE that you can create a .gitignore file and in the first just type in the files (not forgetting their extensions) that you want git to ignore. To add directories just put a / before the folder name eg. /dir1 all in the same .gitignore file. You can use *.txt to exclude all text files.
+
+        BRANCHING AND MERGING [B C M P]
+//you can create and enter another branch and work parallel to the main branch by
+        git branch //check the branches in the repo you are in * 
+        git checkout -b login //here login is the name of the new branch. Now you can create new files, make changes to even files in the main branch and commit but will remain independent of the main branch until you merge them by
+            
+            **** make changes  *****
+            
+        git diff login // this should be done in [master branch] shows the difference between the files the main branch and the branch you are in 
+        git merge login // join to the master branch 
+        
+            do {status, pull request, push}
+    //making a pull request 
+        1. go to github and click compare and pull, describe pull request and click create pull request (now you can see info on commits and conversation with public and private). 2. resolve conversation and merge 
+    
+    //MERGE CONFLICTS ???? / STASHING ????
+    //if changes were made to the same file to the same line in different branches. What to do so you don't loose the changes you made to your current branch when changing to another branch. 
+        1. First commit in the current branch then switch branches. 
+        2. attempting to merge will cause git to put in conflict markers in the file (merge conflict). You can fix this conflicts then commit. Note that the markers are put in the version of the files in the new branch.
+        
+        git branch -d login //delete the login branch 
+        
+    //FORKING 
+    On github, you can go to a repo and fork it. This will make a copy of that repo in your account in a different branch and you can mess with it 😈😈😈
+    </git>
+    <npm>
+        N O D E   P A C K A G E   M A N A G E R  and P A C K A G E . J S O N 
+        
+        npm packages/modules are js libraries/framework
+      Commands
+      npmjs.com
+      npm -v //for version or --version
+      npm //commands available on npm or npm help
+      nvm install v0.10.32 //install this version of node 
+      nvm use v14.17.6 //use this version of node 
+      ctrl l //to clear command line
+      .json file is a manifest file with app info with list of dependencis (name and version). It specifies if versions should be updated. It creates npm scripts. It can be easily created with npm init 
+      
+      
+      
+      {
+      "name" : "tutorial", 
+      "version" : "1.0.0",
+      "description" : "",
+      "main" : "index.js"
+      "type" : "module", //will allow you to use import statement in node whichis originally from es-6 
+      
+      "script" : {
+      "test" : "echo \"Error: no test has been specified\" && exit 17",
+      "execute" : "node file.js", //execute this file with npm run execute 
+      "watch" : "node file.js", //execute with npm run watch 
+      "start" : "node file.js", // execute with npm start. Use "nodemon file.js" to automatically rerun your file anytime you make a change to it.
+      "build" : "babel babelFolder -d jsFolder", //to transpile a later version of js to Ecmascript 2015 after installing the babel cli and babel preset env. Though you would need a file .babelrc which contains a json object like so {"presets" : ["env"]} //env here says transpile later than es-2015 down to es-2015 
+      "lint" : "eslint src/", //setup eslint with npx 
+      }
+      
+      "keywords" : [],
+      "author" : "Ugege Daniel",
+      "licence" : "ISC" | "MIT",
+      
+      "dependencies" :{ //packages required during runtime.installed with npm install package -save
+          "axios" : "^0.20.0", //api for making api requests without using the fetch api. It is a promise-based http client for the browser and node js. It makes it easy to send http request to REST and points and perform CRUD operations 
+          "bcryptjs" : "",
+          "cheerio" : "^4.17.1", //it is used to pick out html element from a website. It works by providing mock-ups and providing an api for traversing and manipulating the resulting elements. It is similar to JQuery. It is used serverside. 
+          "connect-flash" : "",
+          "connect-mongo" : "^3.2.0",
+          "cookies-parser" : "^1.4.5", //install this so you can work with cookies
+          "cors" :"^2.8.5", //Cross Origin Resource Sharing allows Ajax request to skip the same origin policy and access resources grom remote host. It provides an express middleware that can provide cors with different options. It makes it so we can make the right connections on our network that we need to make
+          "cowsay" : "^1 4.0",
+          "dotenv":"8.2.0", //allows us to load environmental variables from a dot env file in the process.env 
+          "ejs" : "^3.1.5", //template engine alternative to pug 
+          "express" : "^4.17.1", 
+          "express-handlebars" : "^4.0.4",
+          "express-session" : "^1.17.1",
+          "express-ejs-layouts" : "",
+          "express-override" : "^3.0.0", //this is what is installed when you run npm i method-override
+          "helmet" : "^3.21.2", //adds a bunch of headers to your network tab, prevents your site from being used as an iframe, hides the framework you are using in your backend. Basically for security.
+          "lowdash" : "^4.17.20",
+          "method-override" : "", //this allows you to use put and delete request not just the default of get and post. 
+          "moment" : "", //to format dates 
+          "mongodb" : "3.6.4",
+          "mongoose" : "",
+          "morgan" : "^1.10.0", //This module generates a logger on every request that was made to the server. It is a popular http request middleware logger for node js which will log a message on the console with information about each request like time, http stauts for every request. It is a request logger middleware.
+          "passport" : "", //Used for user authentication 
+          "passport-google-oauth20" : "", 
+          "pug" : "^3.0.0", //this is a template engine 
+          "react-map-gl" : ""; //this is geo-location library for maps 
+          "webpack" : "^4.44.1",
+          "sass" : "^1.26.10", 
+          "" : ""
+          },
+      
+      "DevDependencies" :{ //packages required only during development. installed with npm install --save-dev
+          "babel-cli" : "^6.26.0", //converts 
+          "babel-preset-env" : "1.7.0",
+          "eslint" : "6.8.0",
+          "cross-env" : "", //for production or development variable 
+          "uuid" : "^8.3.0",
+          "gulp" : "", 
+          "nodemon" : "^2.0.4", //this module reruns your file everytime you make a change to it. 
+          },
+    
+        "engines": {
+            "node" : ">=6.0.0", //version of node
+            "npm" : ">=3.0.0"    //version of npm
+        },
+        "browserlist":[">1%","last 2 vsersions","not ie <= 8"] //this project supports the last two major versions of browsers with at least 1% of users 
+        "contributors":[
+        {
+            "name" : "Stephen Ugege",
+            "email" : "ugegechi@gmail.com",
+            "url" : "steve@k&kexzoteric.com"
+        },
+        {
+        }
+        ],
+        "bugs" : "https://github.com/flaviocopes/package/issues", //where to find the bugs that are being worked on in this project 
+        "homepage":"https://github.com/flaviocopes/package", //homepage of this project 
+        "repository" : {
+            "type" : "git",
+            "url" : "http://github.com/flaviocopes/package/testing.git"
+        },
+        "private" : true  // unless you want to publish this package as a module on npm, this should always be set to true 
+      }
+      
+      
+      
+      
+      npm init//creates package.json in your application folder or npm init -y //for defaults
+      npm config set init -author-name "Daniel Ugege" // changes it so the default author is Daniel Ugege
+      npm get init-author-name //checks for what the author name is. instead of get put
+      npm install lodash --save // add dependencies key to json and lodash folder in node modules folder that it created
+      npm install lodash -g //this will install lodash globally and in the default directory of node not locally in your project which is actually the default 
+      node index.js //this will run the file index.js
+
+      whenever you install a module include the following in ur app
+      const _ = require(lodash) //then use it as you wish.
+
+      now you don't want to upload ur folder containing the node modules to a remote server rather, you will need to take your package.json and index.js which is your app and run
+      npm install //to install the dependencies in the package.json file.
+      dev dependencies eg gulp
+      npm install gulp gulp-sass --save-dev //this will install gulp and gulp sass, save them in the package.json devDependencies key
+
+      now running repo folder with your files
+      npm install --production //will install the dependencies excluding the dev dependencies which are only needed in development.
+      npm unistall gulp --save-dev //will delete the node modules folder and delete the .json dependencies value or remove or rm or un
+      npm install lodash@4.17.3 //to install this version of lodash
+      npm update lodash //to update lodash to latest version
+      npm root -g   //returns the installation location of globally installed packages 
+      ctrl c to stop a module from running 
+      npm remove gulp --save // deletes gulp from your machinne 
+      npm list //shows the packages and depencies in your project
+      npm list --depth 0 //shows the packages without their dependencies 
+      npm start will run the main in yourpackage.json file though in your script you can change the value of your start to node file.js so that this command runs file.js instead. 
+      npm run server //where the value for server in the script in the package.json file is live-server, it will run live-server 
+      npx cowsay cowsay node is simple  //this will draw a cow in the terminal that says node is simple. We use npx if the package us executable (if it is, it will be in the bin folder in the node modules). 
+      npx create-react-app my-project-name //this will create a new directory with the default react template with all the dependencies installed 
+      npm install react-icons //to install react icons 
+      npx eslint --init //1. choose third option 2.common js 3.  none of the above (if you are in your server directory) 4. n 5. node 6. air bnb style guide 7. js
+      npm i @angular/cli //to install angular 
+      ng new projectName 
+      
+
+      lowdash version ^8.2.6
+      6 is patch which has fixed bugs
+      2 minor which has new feature
+      8 major which will break your app
+
+      these symbols in the dependencies value of your package.json
+      ^ means npm install will install latest minor version
+      ~ means npm install will install latest patch version
+      * means npm install will install the latest major version (not advisable)
+      without any symbol means install only this exact version
+      >= means npm install will install any version later than this or this particular version 
+      <= means npm install will install any version earlier than this or this particular version 
+    modules and their uses 
+    nodemon allows you to run whatever file you are working on without reloading in the termnal 
+    live-server allows you to run your html page in whatever directory you are in on your browser 
+    
+    🍉 -w 🥒 -o 🍞 -p
+    
+    where 
+    -w means watch for any changes in the preprocessed file 
+    -o means compile to ---
+    -p means include indentations and line breaks in the compiled file 
+    🍉 is a preprocesor like sass(for css) or pug(for html) 
+    🥒 is the filepath to preprocessed file 
+    🍞 is the filepath to the compiled file 
+    </npm>
+    <bash>
+        bash 
+        
+    </bash>
+    
+        <!--GOOGLE-->
+    <div>
+        1. "search" to make an exact only search
+        2. site:url search to search for something in a site
+        3. site:url search-item to exclude an item from a search result
+        4. search after:2019 show results from after 2019
+        5. search 2015..2019 show results from 2015 to 2019
+        6. search -(a|b) exclude a or b
+        7. search:pdf
+    </div>
+    <div>
+        
+            /*        index.pug 
+    
+    doctype html 
+    head 
+        title call me pug 
+        <link rel="stylesheet", href="bootstrap cdn"/>
+    body 
+        h1 pug language is like html abeg 
+        h1 = h1Variable //specified in app.render 
+        p This is my first pug document 
+        p = pVariable //specied in app.render 
+        p #{pVariable} //different syntax but means the same thing 
+        div.text-center //div with a class of text-center
+        h1.h1.py-4 Simple form //h1 with a class of h1 and py-4 
+        div.container.text-center. 
+            form(method = 'POST', action = '/form_submit') 
+                div.form-group 
+                    input(type = 'text', name = 'username', class = 'form-control', placeholder='username', value='')
+                    
+            //how to write pug language 
+            
+    mixin mixinName (mixinParameter) 
+    date = mixinParameter.date
+    author = mixinParameter.author
+    //you can add if statements if you want to 
+//you can call this mixin by 
++mixinName(c) //where c is a predefined js object containing all the properties and keys to correspond to date and author 
+doctype html | xml | transitional | strict //html for html 5 doctype, xml for xml etc. Note that transitional html does not accept no value attributes eg. in the input tag where we can have just disabled as the attribute. In transitional, we use dissabled = true or false.
+html 
+    head
+        title 
+        link(rel='stylesheet' href='./styles.css')
+        style. 
+            //internal css like you are used to 
+    body
+        div here indentations means this tag is child of the previous tag 
+        p. 
+            | This is a multiline
+            | text inside the p tag. The pipe symbol stops pug from making the first word a tag
+        ul
+            li list item 1
+            li list item 2 
+            li list item 3
+        div.className This is a div with a class of className 
+            h1#idName this is a h1 with an id of idName 
+        #idName this is a div with an id of idName 
+        input(type = 'password')
+        input(type = 'text' name = 'textBox' data-js = `${js expression}`)
+        - put your JavaScript here 
+        //for multiple classes, you can assign an array of classes to arrayName and put class = arrayName as pug attribute to give that element those classes in the array 
+        // for inline styling, assign an object of css styles property-value pairs then give the element an attribute of style = objectName 
+        input&attributes(objectName) //where objectName contains the attribute name and value in a corresponding key value pair 
+        
+        each n , i in  [1, 2, 3, 4, 5] //i here holds the value of the index (or key for objects) while n holds the member in each index. each is the same thing as for they just have different names. instead of this array you can put in an arrayName or objectName 
+        
+            p = n //this will create 5 p tags with 1 to 5 as the text in each tag. 
+        else //pug code to run if there is nothing in the array or there was an error. 
+        
+        if user.loggedIn //where loggedIn is a property of a predefined object called user
+            //output if user.loggedIn is true 
+            #{user.lastLogged} //this will output the value of this from the object. pug equivalent of js string literal.
+        else 
+            //output if user.loggedIn is false. You can also add an else if 
+        
+        //orderstatus => Pending || In-transit || Completed 
+        //the posible values of oderStatus are listed above 
+        - const = orderStatus 
+        
+        case orderStatus 
+            when 'Pending' 
+                //what to do if the value of orderStatus is Pending. You can write more for different values corresponding to different cases 
+            default 
+                //what to do if orderStatus has a value that is not in the when statements we defined. 
+    include includes/footer //this says there is file called footer.pug in the includes folder and we want to add it here in our main index.pug 
+    */
+    
+    
+    
+    /*            base.ejs 
+        Same as HTML syntax only that; 
+        1. <% = title%> //putting this will mean you have a value for it the rendering portion of the server.js file where title is a key. You can use a ternary operator like so 
+                <%= locals.user ? user : "User" %> 
+                where locals is an object which contains all the variables that where assigned in the server.js file for the ejs template. 
+        2. <%-header-%> //this means there is a file header.ejs that contains portions of the html code and we are importing it to the base.ejs file. Note that the portions of code could be a fragment of an otherwise  complete html code. We use this technique to make our code more readable and easy to handle. This is a programming principle known as separation of concern.
+        3. <%if(condition){%>
+                //code to run if condition returns a true result. ie. what to display 
+        <%}%>
+        //everything else remains the same 
+    */
+    </div>
+</body>
+</html>
