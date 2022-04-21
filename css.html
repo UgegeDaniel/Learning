@@ -1,5 +1,12 @@
-/*SASS Organisations*/
-/*Google fonts*/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*Google fonts*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap"); /*poppins*/
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');/*Roboto*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');/*mont serat*/
@@ -7,9 +14,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');/*ubuntu*/
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');/*nunito*/
 /*Muli*/
+/*
+fonts
+alignment (display, margin, padding)
+background
+size 
+color 
+typography and contrast 
+whitespace 
+scale 
+other decoration 
+transitions and animation 
+media querries 
+*/
+
+
+/*
+Sass organisation 
+    abstracts  [{variables}, {functions}, {mixins}, { placeholders }]
+    base  [{reset }, {typography}]
+    componenets  [{buttons}, {carousel}, {cover}, {dropdown}]
+    layout  [{navigation}, {grid}, {header}, {footer}, {sidebar}, {forms }]
+    pages  [{home}, {contact}]
+    themes  [{theme}, {admin}]
+    vendors [{bootstrap}]
+*/
+
 
 /*Variable declarations*/
+:root{
 --bg-color: #f4f4f4; /*could be declared globally or locally within a declaration. Should be ised for colors, font-sizes, font-weights and repeeating box-model values and box-shadow */
+}
 element {
     background-color: var(--bg-color);
 }
@@ -283,3 +318,282 @@ h1 {
     grid-template-columns: 1fr;
     /*then grab all classes that were supposed to span and remove the /y and span n*/
 }
+
+/**/
+BEM 
+Bootstrap 
+Tailwind 
+    </style>
+</head>
+<body>
+    <div>
+BEM
+---
+        Block Element Modifier
+        card => parent style (block)
+        card__text => shared styles (element)
+        card__text--green (modifier) => specific style (probably there are more than one text in the card but this particular card text is green)
+        
+custom font face
+---------------
+        1. go to www.fontsquirrel.com to download the font-face
+        1a. go to license and choose webfont.
+        1b. and chose local
+        1c. after choosing your font of choice go to webfont kit and download the font-face kit with .woff extension
+        2. open the download file, unzip it and copy the text in the stylesheet file and paste in your own stylesheet making sure the @font-face has the following description: source which will link the relative path of the .woff file in your set up
+        Go to https://9elements.github.io/fancy-border-radius/full-control.html#10.10.10.10-90.90.90.90- to make custom tailor made bespoke border-radius
+        F   R   A   M   E   W   O   R   K   S        A  N   D
+
+        L   I   B   R  A   R   I   E   S
+
+21/02/2022
+----------
+S      A     S       S
+-----------------------
+(CSS PREPROCESOR)
+
+        (there are two types .scss and .sass)
+        (documentation is on https://wwww.sass-lang.com)
+        To setup sass, go to terminal and open the root directory of your project.
+        In that directory run npm i -g sass to install sass in that directory
+        Then run sass --watch scss/styles.scss css/styles.css where scss folder contains your .scss file in the root and you have an empty css folder where the above command will create a .css file in the css folder with an optional .css.map file in the same css folder. Don't ever edit this created .css file but link it in the head of your html.
+        The syntax of css and sass is basically the same thing except the following:
+        1. variables
+
+        ---- assignment
+        $light-color: lightgray;
+        $font-weights:(
+        "bold": 750,
+        "normal": 500,
+        "light":250
+        );
+        ---- usage
+        background-color: $light-color;
+        font-weight: map-get($font-weights, bold)
+
+
+        2. nesting
+        --instead of having separate declarations for
+        .shwcase
+        .showcase nav
+        .showcase nav ul
+        .showcase .showcase-container
+
+        --we use
+        .showcase{
+        background-color: pink;
+
+        nav {
+        background-color: $light-color;
+
+        ul {
+        display: flex;
+        }
+        }
+
+        .showcase-container{
+        /*note that the .showcase can be replaced with #{&} (this is called interpolation) to get .showcase .showcase-container in the css with only & we get .showcase-container*/
+        }
+        }
+
+        NOTE  that .sass uses indentations as nesting instead of the curly braces.
+
+
+        3. You can separate your sass files into partials by creating an _config.scss file in your scss folder. This file won't be compiled separately. It is advisable to put your variables, functions and mixins in this file and use them is as you would local variables in all your other .scss files after putting:
+
+        import 'config';
+
+        at the very top of the sass file.
+        Now you can do this as much as you want as you can add a _utilities.scss and import which is where you would add your utilities like container styles, fonts etc
+
+        4. You can create a shared styles for certain accessories with %accessory and later use them with @extend %accessory like so:
+
+        %btn {
+        /*styles to apply to all buttons*/
+
+        &:hover{
+        /*hover for all buttons*/
+        }
+        }
+
+        .btn-primary{
+        @extend %btn;
+        }
+
+        5. You can use functions like lighten and darken on colours to make certain colour properties lighter or darker lile so:
+
+        background-color: lighten (color or variable,percentage of how light you want to make it) eg.
+        background-color: lighten (blue,10%) which will compile it down to 10% lighter blue
+
+
+        6. You can use function which will return a certain value for a property based on a conditional.
+        The syntax of the function is similar to that of a js function.
+        You can set the function in a _config.scss file like so:
+
+
+        @function functionName ($parameter which will be given when called in the main sass file) {
+        @if(condition to run function eg.
+        lighteness($pararmter) > 70) {
+        @return a certain color for this condition
+        }@else {
+        @return a certain color for when the condition is false
+        }
+        }
+
+        in main sass file
+        color: functionName(parameter value which could be a variable)
+
+        @mixin mixinName($variableName){
+        /*mutiple styles*/
+        background-color: $variableName;
+        color: $variableName;
+        }
+
+        to include in sass file we use:
+
+        .container{
+        @include mixinName(value to put in place of the variable);
+        }
+
+        The value we parse in can be an actual value, a variable that carries a value, a lighten or darken function etc
+
+        This will give the container class all the styles in the mixin
+
+        Using mixins with media querries
+        variable assignment
+        $mixinName: {"v1":"value1", "v2": "value2";}
+        @mixin mixinName ($variable){
+        @media(min-width: map-get($mixinName, $variable)) {
+        @content;
+        }
+        }
+
+        then called at:
+
+        .container{
+        @include mixinName(v1 or v2 to put in place of the variable);
+        }
+        7. We can use loops in sass like so:
+
+        1. first assign a comma-separated list to a variable
+        $var1 : (1,2,3,4,) ;
+        /*then loop through by the following*/
+        @each $var2 in $var1 {
+        .m-#{space} { /*this will put m-1, m-2 etc*/
+        margin: {$var}*rem;
+        }
+
+        .my-#{space} { /*this will put m-1, m-2 etc*/
+        margin: {$var}*rem 0;
+        }
+
+        .mx-#{space} { /*this will put m-1, m-2 etc*/
+        margin: 0 {$var}*rem ;
+        }
+
+        }
+
+        8. You don't need to include the calc in css just put it line like that.But the downside is the numbers have to have the same unit. If you don't want to use the same unit you can use the calc(). Sass allows that.
+        #   #   #   #   #   #   #   #   #   #   #   #   #   #   #  #
+        DON'T EVER DEPLOY YOUR SASS FOLDER. YOU DEPLOY YOUR DIST FOLDER WHICH CONTAINS THE HTML AND COMPILED CSSS FILES BUT NOT YOUR SASS.
+
+
+B   O   O   T   S   T   R   A   P       5
+-----------------------------------------
+(C  S   S       F   R   A   M   E   W   O   R   K)
+        general
+        -------
+        dark -- black
+        light -- lightgray
+        primary -- blue
+        secondary -- gray
+        success -- green
+        danger -- red
+        warning -- yellow
+
+        sm -- min-width: 576px
+        md -- min-width: 768px
+        lg -- min-width: 992px
+        bg-dark -- background-color grey
+
+        ms-auto -- align the item to the right
+        pt-x -- padding top where x is a number from 1-5 with 1 being the smallest t for top, b for bottom, nothing for all around, x is for left and right, y for top and bottom
+        rounded-circle will give the element a border-radiusof 50%
+
+        w-x -- width where x is a number which without any unit is assumed to be %
+
+        container -- adds padding
+        collapse -- makes a dropdown menu
+
+        d-x-flex -- display flex where x is a breakpoint where flexbox will kick in and without any, it will be flex at every size
+        align-items-center -- align items center
+        justify-content-between -- justify-content space-between
+        d-x-block -- display block none for display none x is a breakpoint
+
+        To use display grid
+        wrap the parent in a class of row and give each child a class of col-x depending on the  number of columns you want and where x is a breakpoint point. g-x for gap (gutter) x is a number from 1 to 5 could be gx- or gy- . The more appropriate and responsive way is to use col-x-n where x is a breakpoint and n is =12/no of columns you want. So basically we have 12 columns in the grid system and this element will take up n portions.
+
+        position-relative -- or position-absolute to position relatively or absolutely
+        end-0 -- means right 0
+
+        html heading tags eg. h1 are used as classes in bootstrap to format a text into that tag's format.
+        nav
+        ---
+        navbar
+        navbar-extend-lg -- expand the navbar at lg breakpoint ie. min-width: 992px.
+        bg-dark
+        navbar-toggler data-bs-toggle="collapse" data-bs-target = "#navMenu" -- these goes in a button with type of button containing a span with class of navbar-toggler-icon (for the hamburger icon). For modals, exchange collapse to modal and set the target equall to the id of the modal.
+        navbar-dark -- this will make the text light since the bg is dark
+
+        navbar-brand -- for styling logo text
+        navbar-collapse id="navMenu"
+        navbar-nav on the ul containing the links will disappear at break point
+        nav-item on the li
+        nav-link on the a
+
+
+        main
+        -----
+        text-light -- color of text
+        text-x-center -- to align text center where x is a breakpoint
+        fw-bold -- means font weight bold
+        lead -- makes text a little bigger than normal
+        img-fluid -- on img to make the image not breakout of its container
+
+        btn -- on all button tags and optionally on a tags to format them as buttons
+        lg -- larger than default button
+        primary -- color
+        input-group -- groups in a div and styles related form inputs
+        BOOTSTAP 5 has icons but you will need to either install with npm or use the cdn which you paste in the head   Then you use it with
+        an i tag  with two classes bi and bi-laptop for laptop icon
+        card
+        card-body
+        card-title
+        card-text
+        card-image
+        arcodion arcodion-flush id="parent" -- where flush is a type of arcodion
+        arcodion-item
+        arcodion-header
+        arcodion-button collapsed data-bs-toggle="collapse" data-bs-target = "#arcodion-text" -- these goes in a button with type of button containing text that could clicked to reveal the text
+        arcodion-collapse collapse id="arcodion-text" data-bs-parent = "#parent"
+        arcodion-body -- contains text to reveal
+        list-group list-group-flush -- on ul tag
+        list-group-item -- on li
+
+        Modal
+        -----  modal-dialog
+        modal-content
+        modal-header
+        modal-title id
+        btn-close data-bs-dismiss = "modal"
+        modal-body
+        modal-footer
+        btn data-bs-dismiss = "modal" -- text close in button tag
+        btn -- button with text save changes or submit
+        form
+        ----  col-form-label -- with a form attribute  and text            value of your choosing
+        form-control -- on input tag with with a type and id of your choosing
+
+    </div>
+</body>
+</html>
