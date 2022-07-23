@@ -1,0 +1,74 @@
+1. set up react environment with npx create-react-app project-name 
+    run npm start
+    
+2. compomentize your project design
+3. bootstrap and font awesome cdn can be put in the index.html 
+4. Jsx is javascript syntax extension
+5. you can only return one single parent element from a component 
+
+[component, prop, default props, prop types, events, states, modules]
+
+6. you can use a fragment component ie <></> if you don't want a div to be compiled
+
+
+7. {} contain:
+    pre-defined variables 
+        (if variable is an object of jsx styles it can be used to style component with style = {x} or {{}}
+        )
+
+    js computation 
+
+    tenary operation 
+        (used for conditional rendering)
+
+    props.attribute in component creation or {attribute} if you use destructuring
+
+    fxnName in the use of a component, though we pass it as a prop (or used as response to event) to the creation but define it in the use 
+
+    used to create list components like so:
+    X.map((x1, i)=>{<div key={i}> {x1.p} </div>})
+
+    it is used to hold state in the use and carried by attribute to component creation by props
+
+
+8. create component, import it in parent and use is as a self clocing tag
+
+
+9. PROPS, DEFAULT PROPS, PROPSTYPE, REQUIRED PROPS, PROPS DELEGATION
+attributes of a used components are handled in it's creation like so:
+{props.attribute}  (or {attribute if you used destructuring} )
+so that as the value of the attribute changes we get a new component (pass prop (or an object of list of attributes) as function parameter and use prop.attribute everywhere) or use default props in the component creation where you don't pass any attribute like so after the component body:
+Component.defaultProps ={
+    attribute: "Default attribute value",
+}
+
+Component.propTypes = {
+    attribute: PropTypes.string.isRequired, //for an attribute we want to be a string ONLY and MUST be passed by usage
+
+}
+To use proptypes you have to import it from prop-types
+
+*** All functions are defined in the app component then passed to the componentg that will user it through props like so:
+ fxnName = {fxnName}; //from the component (grandparent) in the app component to the parent component in the grand parent to the child (that actually wants to use it as probably a response to an event) in the parent component <check 11>
+
+
+
+10. State are imutable ie. you cannot use array.push with a state that happens to be an array.
+State are managed in the app component and pass the outcome of the state through props like so 
+<Component attribute={state}/> often times the name for the attribute and the state are usually the same
+
+11. With events we call a function to call the function that would do stuff like so : 
+onClick ={()=>{fxnName(parameter value)}}
+
+USING MODULES 
+1. REACT ICONS 
+install it with npm install react-icons 
+import it like so 
+    import {a} from 'react-icons/b' //where a is the specific icon while b is the library
+
+
+TASK TRACKER
+1. header component with title 
+2. task component 
+3. npm install react-icons
+4
